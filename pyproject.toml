@@ -1,0 +1,61 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mtg-commander-deck-builder"
+version = "0.1.0"
+description = "Generate Commander deck recommendations from your card collection"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+authors = [
+    {name = "MTG Deck Builder"}
+]
+keywords = ["mtg", "magic", "commander", "deck", "edh", "edhrec"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Games/Entertainment",
+]
+
+dependencies = [
+    "pyedhrec>=0.0.2",
+    "requests>=2.25.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "black>=22.0.0",
+    "flake8>=5.0.0",
+]
+
+[project.scripts]
+mtg-deck-builder = "mtg_deck_builder.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/mtg-deck-builder/mtg-commander-deck-builder"
+Repository = "https://github.com/mtg-deck-builder/mtg-commander-deck-builder"
+Issues = "https://github.com/mtg-deck-builder/mtg-commander-deck-builder/issues"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["mtg_deck_builder*"]
+
+[tool.black]
+line-length = 88
+target-version = ['py38']
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
